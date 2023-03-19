@@ -52,10 +52,8 @@ While 1
 		Case $InputTime
 			Local $iNumber = Number(GUICtrlRead($InputTime))
 			If IsNumber($iNumber) And $iNumber <> 0 Then $iDelay = $iNumber * 1000
-
-		Case $PageFaultCount  ;TODO: covert to list
-			MsgBox($MB_ICONINFORMATION, _Extract("PageFaultCount", "Title"), _Extract("PageFaultCount", "Description"))
-
+		Case $aControlID[0][0] To $aControlID[9][0]
+			MsgBox($MB_ICONINFORMATION, _Extract(_Extract($nMsg, "Title", $aControlID), "Title"), _Extract(_Extract($nMsg, "Title", $aControlID), "Description"))
 		Case Else
 			Local $iDelta = Delay($iDelay)
 			If Not $iCounter = $iDelta Then
