@@ -25,8 +25,10 @@
 
 #include "WinApi.au3"
 
+Local $sVersion = "v1.0"
 Local $iDelay = 5000
 Local $iCounter
+;~ Local $iPID = ($cmdline[0] > 0 ? ProcessExists($cmdline[1]) : @AutoItPID)
 Local $iPID = @AutoItPID
 Global $bCFlag = False
 
@@ -51,7 +53,7 @@ $aControlID[8][1] = "PeakPagefileUsage"
 $aControlID[9][1] = "PrivateUsage"
 
 #Region ### START Koda GUI section ### Form= third-party\KodaForm.kxf
-$Form = GUICreate("ProcessMemoryInfo " & $iPID, 488, 443, 192, 124)
+$Form = GUICreate("ProcessMemoryInfo " & $sVersion, 488, 443, 192, 124)
 
 $aControlID[0][0] = GUICtrlCreateLabel("PageFaultCount", 432, 12, 110, 17)
 GUICtrlCreateLabel("Page Faults:", 352, 12, 80, 17)
