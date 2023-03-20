@@ -35,7 +35,8 @@ Overall, the memory value shown in the Task Manager can be a useful starting poi
 
 Windows only, but not forever!
 
-[Portable version] - Download on your PC and extract from archive
+[Portable version] - Just download on your PC
+
 [Package version] - Chose this one if you got faulty virus alert (It is possible to see malware caution because I haven't got valid certificate)
 
 ## Tech
