@@ -28,6 +28,8 @@
 
 #include "module\GUI.au3"
 
+Local $sListViewText = $sListTitle & @CRLF
+
 While 1
 	Local $nMsg = GUIGetMsg()
 	Switch $nMsg
@@ -41,7 +43,7 @@ While 1
 			Snap()
 		Case $idItem0 To $idItem9
 			ClipPut(StringReplace(GUICtrlRead($nMsg), ":", ""))
-			MsgBox($MB_ICONINFORMATION, "Info", "Data copied to clipboard", 2)
+			MsgBox($MB_ICONINFORMATION, "Info", "Data row copied to clipboard", 2)
 		Case $BeepCP
 			If _IsChecked($BeepCP) Then
 				$bBeep = False
@@ -54,6 +56,14 @@ While 1
 			If IsNumber($iNumber) And $iNumber <> 0 Then $iDelay = $iNumber * 1000
 		Case $aControlID[0][0] To $aControlID[9][0]
 			MsgBox($MB_ICONINFORMATION, _Extract(_Extract($nMsg, "Title", $aControlID), "Title"), _Extract(_Extract($nMsg, "Title", $aControlID), "Description"))
+		Case $ListView
+			$sListViewText &= StringReplace(GUICtrlRead($PIDName), ":", "") & @CRLF
+			For $i = 0 To 9
+				$sListViewText &= StringReplace(GUICtrlRead(Execute("$idItem" & $i)), ":", "") & @CRLF
+			Next
+			ClipPut($sListViewText)
+			MsgBox($MB_ICONINFORMATION, "Info", "Table copied to clipboard", 2)
+			$sListViewText = $sListTitle & @CRLF
 		Case Else
 			Local $iDelta = Delay($iDelay)
 			If Not $iCounter = $iDelta Then

@@ -7,6 +7,11 @@
 	A simple tool to visualize process memory usage: GUI module
 
 #ce ----------------------------------------------------------------------------
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Run_Tidy=y
+#AutoIt3Wrapper_AU3Check_Parameters=-w 1 -w 2 -w 3 -w- 4 -w 5 -w 6 -w- 7
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+
 
 #include <ButtonConstants.au3>
 #include <EditConstants.au3>
@@ -31,6 +36,8 @@ Global $hStarttime = _Timer_Init()
 Global $iColCount = 1
 Global $bBeep = False
 
+Local $sListTitle = "Description|# SNAP 1 #|# SNAP 2 #|# SNAP 3 #|# SNAP 4 #"
+
 Local $aControlID[10][2]
 $aControlID[0][1] = "PageFaultCount"
 $aControlID[1][1] = "PeakWorkingSetSize"
@@ -40,7 +47,7 @@ $aControlID[4][1] = "QuotaPagedPoolUsage"
 $aControlID[5][1] = "QuotaPeakNonPagedPoolUsage"
 $aControlID[6][1] = "QuotaNonPagedPoolUsage"
 $aControlID[7][1] = "PagefileUsage"
-$aControlID[8][1] = "PeakPagefileUsage" 
+$aControlID[8][1] = "PeakPagefileUsage"
 $aControlID[9][1] = "PrivateUsage"
 
 #Region ### START Koda GUI section ### Form= third-party\KodaForm.kxf
@@ -86,8 +93,9 @@ GUICtrlSetFont(-1, 16, 800, 0, "MS Sans Serif")
 $BeepCP = GUICtrlCreateCheckbox("Silent mode", 352, 245, 105, 17)
 GUICtrlSetState($BeepCP, $GUI_CHECKED)
 
-$ListView = GUICtrlCreateListView("Description|# SNAP 1 #|# SNAP 2 #|# SNAP 3 #|# SNAP 4 #", 24, 272, 441, 145)
+$ListView = GUICtrlCreateListView($sListTitle, 24, 272, 441, 145)
 
+$PIDName = GUICtrlCreateListViewItem("Name of process:", $ListView)
 $idItem0 = GUICtrlCreateListViewItem("Number of page faults:", $ListView)
 $idItem1 = GUICtrlCreateListViewItem("Peak working set size:", $ListView)
 $idItem2 = GUICtrlCreateListViewItem("Current working set size:", $ListView)
@@ -121,6 +129,7 @@ Func Snap()
 	For $i = 1 To $iColCount
 		$sSep &= "|"
 	Next
+	GUICtrlSetData($PIDName, $sSep & NameOfPID(GUICtrlRead($InputPID)))
 	For $i = 0 To UBound($aControlID) - 1
 		GUICtrlSetData(Execute("$idItem" & $i), $sSep & GUICtrlRead($aControlID[$i][0]))
 	Next
@@ -136,3 +145,8 @@ EndFunc   ;==>_IsChecked
 Func ProcessValue($iPeak, $iCurrent)
 	Return $iCurrent / $iPeak * 100
 EndFunc   ;==>ProcessValue
+
+Func NameOfPID($PID)
+	Local $aProcessList = ProcessList()
+	Return $aProcessList[_ArraySearch($aProcessList, $PID)][0]
+EndFunc   ;==>NameOfPID
