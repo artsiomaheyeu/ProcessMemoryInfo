@@ -73,7 +73,7 @@ $aControlID[8][0] = GUICtrlCreateLabel("PeakPagefileUsage", 264, 12, 70, 17, $SS
 $aControlID[9][0] = GUICtrlCreateDummy()
 
 $Button = GUICtrlCreateButton("Update", 352, 70, 105, 33)
-$SnapButton = GUICtrlCreateButton("Snap", 352, 208, 105, 33)
+$SnapButton = GUICtrlCreateButton("Snap #1", 352, 208, 105, 33)
 GUICtrlCreateLabel("PID:", 354, 44, 50, 17)
 $InputPID = GUICtrlCreateInput($iPID, 382, 41, 75, 21, $ES_NUMBER)
 $InputTime = GUICtrlCreateInput($iDelay / 1000, 410, 112, 20, 21, $ES_NUMBER)
@@ -126,6 +126,7 @@ Func Snap()
 	Next
 	$iColCount += 1
 	If $iColCount = 5 Then $iColCount = 1
+	GUICtrlSetData($SnapButton, "Snap #" & $iColCount)
 EndFunc   ;==>Snap
 
 Func _IsChecked($idControlID)
