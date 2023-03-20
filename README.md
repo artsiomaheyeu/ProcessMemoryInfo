@@ -36,6 +36,7 @@ Overall, the memory value shown in the Task Manager can be a useful starting poi
 Windows only, but not forever!
 
 [Portable version] - Download on your PC and extract from archive
+[Package version] - Chose this one if you got faulty virus alert (It is possible to see malware caution because I haven't got valid certificate)
 
 ## Tech
 
@@ -52,6 +53,7 @@ MIT
 **Free Software, Hell Yeah!**
 
    [GetProcessMemoryInfo]: <https://learn.microsoft.com/en-us/windows/win32/api/psapi/nf-psapi-getprocessmemoryinfo>
-   [Portable version]: <>
+   [Portable version]: <https://github.com/artsiomaheyeu/ProcessMemoryInfo/releases/download/v1.0/meme.exe>
+   [Package version]: <https://github.com/artsiomaheyeu/ProcessMemoryInfo/releases/download/v1.0/meme.cmd>
    [AutoIt v3.3.14.5]: <https://www.autoitscript.com>
    [send me]: <https://www.linkedin.com/in/artiomageev>
