@@ -55,6 +55,6 @@ MIT
 
    [GetProcessMemoryInfo]: <https://learn.microsoft.com/en-us/windows/win32/api/psapi/nf-psapi-getprocessmemoryinfo>
    [Portable version]: <https://github.com/artsiomaheyeu/ProcessMemoryInfo/releases/download/v1.0/meme.exe>
-   [Package version]: <https://github.com/artsiomaheyeu/ProcessMemoryInfo/releases/download/v1.0/meme.cmd>
+   [Package version]: <https://github.com/artsiomaheyeu/ProcessMemoryInfo/releases/download/v1.0/ProcessMemoryInfo.zip>
    [AutoIt v3.3.14.5]: <https://www.autoitscript.com>
    [send me]: <https://www.linkedin.com/in/artiomageev>
